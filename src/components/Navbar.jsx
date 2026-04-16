@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-white text-gray-800 shadow-sm px-4">
       <div className="navbar-start">
-        <Link href="/" className="btn btn-ghost text-xl font-bold">
+        <Link href="/" className="ml-5 text-3xl font-bold">
           Keen Keeper
         </Link>
       </div>
@@ -19,7 +19,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className={`link no-underline ${pathname === "/" ? "bg-[#244D3F] text-white" : ""} text-lg`}
+                className={`link no-underline ${pathname === "/" ? "bg-[#244D3F] text-white" : ""} text-md hover:bg-gray-200`}
               >
                 <House />
                 Home
@@ -28,7 +28,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/timeline"
-                className={`link no-underline ${pathname === "/timeline" ? "bg-[#244D3F]  text-white" : ""} text-lg`}
+                className={`link no-underline ${pathname === "/timeline" ? "bg-[#244D3F]  text-white" : ""} text-md hover:bg-gray-200`}
               >
                 <Clock />
                 Timeline
@@ -37,7 +37,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/stats"
-                className={`link no-underline ${pathname === "/stats" ? "bg-[#244D3F] text-white" : ""} text-lg`}
+                className={`link no-underline ${pathname === "/stats" ? "bg-[#244D3F] text-white" : ""} text-md hover:bg-gray-200`}
               >
                 <ChartLine />
                 Stats
@@ -68,19 +68,19 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow-lg bg-white rounded-box w-52 border border-gray-100"
           >
             <li>
-              <Link href="/" className={`link no-underline ${pathname === "/" ? "bg-[#244D3F] text-white" : ""} text-lg`}>
+              <Link href="/" className={`link no-underline ${pathname === "/" ? "bg-[#244D3F] text-white" : ""} text-md hover:bg-gray-200`}>
                 <House />
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/timeline" className={`link no-underline ${pathname === "/timeline" ? "bg-[#244D3F] text-white" : ""} text-lg`}>
+              <Link href="/timeline" className={`link no-underline ${pathname === "/timeline" ? "bg-[#244D3F] text-white" : ""} text-md hover:bg-gray-200`}>
                 <Clock />
                 Timeline
               </Link>
             </li>
             <li>
-              <Link href="/stats" className={`link no-underline ${pathname === "/stats" ? "bg-[#244D3F] text-white" : ""} text-lg`}>
+              <Link href="/stats" className={`link no-underline ${pathname === "/stats" ? "bg-[#244D3F] text-white" : ""} text-md hover:bg-gray-200`}>
                 <ChartLine />
                 Stats
               </Link>
