@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'KeenKeeper - Stats',
+  description: 'KeenKeeper - Friends Communication Stats',
+}
 
 const StatsPage = () => {
     return (

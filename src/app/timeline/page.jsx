@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'KeenKeeper - Timeline',
+  description: 'KeenKeeper - Friends Timeline',
+}
 
 
 const TimelinePage = () => {
