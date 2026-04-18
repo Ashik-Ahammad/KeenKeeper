@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html, body {
+  overflow-x: hidden;
+}
 
 @theme {
   --font-sans: var(--font-geist-sans);

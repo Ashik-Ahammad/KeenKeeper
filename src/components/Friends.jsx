@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Friends = async () => {
-  const res = await fetch("http://localhost:3000/data/friends.json");
+  const res = await fetch("https://keen-keeper-seven-tau.vercel.app/data/friends.json", {
+    cache : "no-store"
+  });
   const friendsData = await res.json();
 
   return (
@@ -17,10 +20,12 @@ const Friends = async () => {
               className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 text-center hover:shadow-lg transition-all duration-300 hover:cursor-pointer flex flex-col items-center"
             >
               <div className="flex justify-center">
-                <img
+                <Image
                   src={friend.picture}
                   alt={friend.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-white shadow"
+                  width={96}
+                  height={96}
+                  className=" rounded-full mx-auto mb-4 object-cover"
                 />
               </div>
 
@@ -49,10 +54,10 @@ const Friends = async () => {
                     friend.status === "overdue"
                       ? "bg-[#ef4444] text-white"
                       : friend.status === "almost due"
-                      ? "bg-[#efad44] text-white"
-                      : friend.status === "on-track"
-                      ? "bg-[#244D3F] text-white"
-                      : "bg-gray-600 text-white"
+                        ? "bg-[#efad44] text-white"
+                        : friend.status === "on-track"
+                          ? "bg-[#244D3F] text-white"
+                          : "bg-gray-600 text-white"
                   }`}
                 >
                   {friend.status}

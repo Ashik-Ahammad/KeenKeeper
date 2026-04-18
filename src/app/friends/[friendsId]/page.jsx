@@ -1,13 +1,18 @@
-import React from "react";
 import { FaBoxArchive } from "react-icons/fa6";
 import { HiOutlineBellSnooze } from "react-icons/hi2";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { MessageSquareMore, PhoneCall, Video } from "lucide-react";
+import CallToggleBtn from "@/components/FriendDetailsBtn/CallToggleBtn";
+import TextToggleBtn from "@/components/FriendDetailsBtn/TextToggleBtn";
+import VideoToggleBtn from "@/components/FriendDetailsBtn/VideoToggleBtn";
+import Image from "next/image";
+
 
 const FriendsDetailPage = async ({ params }) => {
   const { friendsId } = await params;
 
-  const res = await fetch("http://localhost:3000/data/friends.json");
+  const res = await fetch("https://keen-keeper-seven-tau.vercel.app/data/friends.json", {
+    cache : "no-store"
+  });
   const friends = await res.json();
 
   const friend = friends.find((f) => f.id === Number(friendsId));
@@ -31,10 +36,12 @@ const FriendsDetailPage = async ({ params }) => {
     <div className="px-4 sm:px-6 md:p-6 mt-6 md:mt-10 min-h-screen w-full max-w-5xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="bg-white rounded-2xl shadow p-6 text-center">
-          <img
+          <Image
             src={friend.picture}
             alt={friend.name}
-            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+            width={96}
+            height={96}
+            className=" rounded-full mx-auto mb-4 object-cover"
           />
 
           <h2 className="text-xl font-bold">{friend.name}</h2>
@@ -123,20 +130,15 @@ const FriendsDetailPage = async ({ params }) => {
             </h3>
 
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
-              <button className="border p-3 sm:p-4 border-gray-100 shadow-sm rounded-lg hover:bg-gray-50 transition-colors hover:cursor-pointer flex flex-col items-center justify-center gap-2">
-                <PhoneCall className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
-                <span className="text-sm sm:text-base font-medium">Call</span>
-              </button>
+              {/* call btn */}
+              <CallToggleBtn friend={friend}/>
 
-              <button className="border p-3 sm:p-4 border-gray-100 shadow-sm rounded-lg hover:bg-gray-50 transition-colors hover:cursor-pointer flex flex-col items-center justify-center gap-2">
-                <MessageSquareMore className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
-                <span className="text-sm sm:text-base font-medium">Text</span>
-              </button>
+              {/* text btn */}
+              <TextToggleBtn friend={friend}/>
 
-              <button className="border p-3 sm:p-4 border-gray-100 shadow-sm rounded-lg hover:bg-gray-50 transition-colors hover:cursor-pointer flex flex-col items-center justify-center gap-2">
-                <Video className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
-                <span className="text-sm sm:text-base font-medium">Video</span>
-              </button>
+              {/* video btn */}
+              <VideoToggleBtn friend={friend}/>
+
             </div>
           </div>
         </div>
